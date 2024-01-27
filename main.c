@@ -12,7 +12,7 @@ char stateY = NONEY;
 
 const int stepsPerRevolution = 200;
 
-Stepper myStepper = Stepper(stepsPerRevolution, 8, 9, 10, 11);
+Stepper myStepper = Stepper(stepsPerRevolution, 8, 10, 9, 11);
 
 void setup() {
   // put your setup code here, to run once:
@@ -60,10 +60,12 @@ void loop() {
 
   if (stateX == RIGHT){
     myStepper.step(100);
+    Serial.print("RIGHT");
     delay(100);
   }
   else if (stateX == LEFT){
     myStepper.step(-100);
+    Serial.print("LEFT");
     delay(100);
   }
   
