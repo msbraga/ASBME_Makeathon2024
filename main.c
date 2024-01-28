@@ -13,20 +13,15 @@ char stateY = NONEY;
 const int stepsPerRevolution = 360;
 
 Stepper myStepper = Stepper(stepsPerRevolution, 10, 12, 11, 13);
-Stepper myStepper2 = Stepper(stepsPerRevolution, 6, 8, 7, 9);
+// Stepper myStepper2 = Stepper(stepsPerRevolution, 6, 8, 7, 9);
 
 void setup() {
-  // put your setup code here, to run once:
-
 Serial.begin(9600);
 myStepper.setSpeed(10);
-myStepper2.setSpeed(10);
-
+// myStepper2.setSpeed(10);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-
   // read analog X and Y analog values
   Joy_xValue = analogRead(VRX_PIN);
   Joy_yValue = analogRead(VRY_PIN);
@@ -72,17 +67,15 @@ void loop() {
   }
 
   if (stateY == UP){
-    myStepper2.step(90);
+    // myStepper2.step(90);
     Serial.print("UP ");
     delay(20);
   }
   else if (stateY == DOWN){
-    myStepper2.step(-90);
+    // myStepper2.step(-90);
     Serial.print("DOWN ");
     delay(20);
   }
-  
-
 }
 
 /*
