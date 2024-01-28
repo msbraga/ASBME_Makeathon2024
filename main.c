@@ -10,15 +10,17 @@ enum states { UP, DOWN, LEFT, RIGHT, NONEX, NONEY};
 char stateX = NONEX;
 char stateY = NONEY;
 
-const int stepsPerRevolution = 200;
+const int stepsPerRevolution = 360;
 
-Stepper myStepper = Stepper(stepsPerRevolution, 8, 10, 9, 11);
+Stepper myStepper = Stepper(stepsPerRevolution, 10, 12, 11, 13);
+Stepper myStepper2 = Stepper(stepsPerRevolution, 6, 8, 7, 9);
 
 void setup() {
   // put your setup code here, to run once:
 
 Serial.begin(9600);
-myStepper.setSpeed(100);
+myStepper.setSpeed(10);
+myStepper2.setSpeed(10);
 
 }
 
@@ -40,7 +42,7 @@ void loop() {
   if (Joy_xValue >= 857){
     stateX = RIGHT;
   }
-  else if (Joy_xValue <= 30){
+  else if (Joy_xValue <= 100){
     stateX = LEFT;
   }
   else{
@@ -51,7 +53,7 @@ void loop() {
   if (Joy_yValue >= 857){
     stateY = UP;
   }
-  else if (Joy_yValue <= 30){
+  else if (Joy_yValue <= 100){
     stateY = DOWN;
   }
   else{
@@ -59,14 +61,25 @@ void loop() {
   }
 
   if (stateX == RIGHT){
-    myStepper.step(100);
-    Serial.print("RIGHT");
-    delay(100);
+    myStepper.step(90);
+    Serial.print("RIGHT ");
+    delay(20);
   }
   else if (stateX == LEFT){
-    myStepper.step(-100);
-    Serial.print("LEFT");
-    delay(100);
+    myStepper.step(-90);
+    Serial.print("LEFT ");
+    delay(20);
+  }
+
+  if (stateY == UP){
+    myStepper2.step(90);
+    Serial.print("UP ");
+    delay(20);
+  }
+  else if (stateY == DOWN){
+    myStepper2.step(-90);
+    Serial.print("DOWN ");
+    delay(20);
   }
   
 
