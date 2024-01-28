@@ -17,7 +17,7 @@ Stepper myStepper = Stepper(stepsPerRevolution, 10, 12, 11, 13);
 
 void setup() {
 Serial.begin(9600);
-myStepper.setSpeed(10);
+myStepper.setSpeed(20);
 // myStepper2.setSpeed(10);
 }
 
@@ -25,13 +25,6 @@ void loop() {
   // read analog X and Y analog values
   Joy_xValue = analogRead(VRX_PIN);
   Joy_yValue = analogRead(VRY_PIN);
-
-  // print data to Serial Monitor on Arduino IDE
-  Serial.print("x = ");
-  Serial.print(Joy_xValue);
-  Serial.print(", y = ");
-  Serial.println(Joy_yValue);
-  delay(200);
 
   //JOYSTICK RIGHT/LEFT
   if (Joy_xValue >= 857){
@@ -57,25 +50,23 @@ void loop() {
 
   if (stateX == RIGHT){
     myStepper.step(90);
-    Serial.print("RIGHT ");
-    delay(20);
+    delay(10);
   }
   else if (stateX == LEFT){
     myStepper.step(-90);
-    Serial.print("LEFT ");
-    delay(20);
+    delay(10);
   }
 
+/*
   if (stateY == UP){
-    // myStepper2.step(90);
-    Serial.print("UP ");
-    delay(20);
+    myStepper2.step(90);
+    delay(10);
   }
   else if (stateY == DOWN){
-    // myStepper2.step(-90);
-    Serial.print("DOWN ");
-    delay(20);
+    myStepper2.step(-90);
+    delay(10);
   }
+*/
 }
 
 /*
@@ -84,4 +75,3 @@ LEFT => X<30
 UP => Y>1012
 DOWN => Y<5
 */
-
